@@ -3,27 +3,31 @@ This is a Rock Paper Scissors game made in Python where the user plays against t
 
 import random
 
-print("Let's play Rock, Paper, Scissors!")
+print("Let's play Rock Paper Scissors!")
 
+# list of choices
 select = ["rock", "paper", "scissors"]
+
+# computer's random choice
 computer = random.choice(select)
+
+# user input
 user = input("Enter rock, paper, or scissors: ").lower()
 
-print("\nYou chose:", user)
-print("Computer chose:", computer)
+print(f"Computer chose: {computer}")
+print(f"You chose: {user}")
 
-# define what each move can beat
-win_rules = {
-    "rock": "scissors",
-    "paper": "rock",
-    "scissors": "paper"
-}
 
+# checks if user entered a valid choice
 if user not in select:
-    print("Invalid choice! Please enter rock, paper, or scissors only >.<")
-elif user == computer:
-    print("It's a tie! 😐")
-elif win_rules[user] == computer:
-    print("You win! 🎉")
+    print("Invalid choice! Please enter rock, paper, or scissors only.")
 else:
-    print("Computer wins! ")
+    # winner logic
+    if user == computer:
+        print("Ohh... it's a tie >,<")
+    elif (user == "rock" and computer == "scissors") or \
+         (user == "paper" and computer == "rock") or \
+         (user == "scissors" and computer == "paper"):
+        print("You win! 🎉")
+    else:
+        print("Computer wins! (00)")
